@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+See https://blog.logrocket.com/the-ultimate-guide-to-iframes/
+-->
+<html>
+<head>
+  <!-- Redirect to index.php -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Sondehub Dynamic Tracker</title>
+  <style>
+    iframe {
+      border: none;
+    }
+    table {
+      width: 100%;
+      border: 2px solid #000000;
+      border-collapse: collapse;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    tr, td {
+      border: 2px solid #000000;
+      border-collapse: collapse;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      padding-left: 2px;
+      padding-right: 2px;
+    }
+  </style>
+  <script type="text/javascript" src="js/jquery-3.7.1-min.js"></script>
+</head>
+<body>
+  <table>
+    <tr>
+      <td width="100%" colspan="3">
+        <iframe
+          id="sondehub"
+	      title="Sondehub Tracker"
+          frameborder="0"
+	      width="100%"
+	      height="700px"
+          sandbox="allow-same-origin allow-scripts"
+        >
+        </iframe>
+      </td>
+    </tr>
+    <tr>
+      <td width="500px">
+        <iframe
+          id="kpbz_loop"
+	      title="KPBZ Radar Loop"
+	      width="100%"
+	      height="510px"
+          sandbox="allow-same-origin"
+        >
+        </iframe>
+      </td>
+      <td width="600px">
+        <iframe
+          id="kpbz_weatherstory"
+	      title="KPBZ Weather Story"
+	      width="100%"
+	      height="510px"
+          sandbox="allow-same-origin"
+        >
+        </iframe>
+      </td>
+      <td width="750px">
+        <iframe
+          id="natl_forecast"
+	      title="National Forecast"
+	      width="100%"
+          height="510px"
+          sandbox="allow-same-origin"
+        >
+        </iframe>
+      </td>
+    </tr>
+  </table>
+  <script type="text/javascript" src="js/data_utils.js"></script>
+  <script>
+    const kpbz_loop_url = "https://radar.weather.gov/ridge/standard/KPBZ_loop.gif"
+    const kpbz_weatherstory_url = "https://www.weather.gov/images/pbz/weatherstory/weatherstory.png"
+    const natl_forecast_url = "https://www.wpc.ncep.noaa.gov/noaa/noaad1.gif"
+    window.setInterval("loadIFrameSource('kpbz_loop', kpbz_loop_url);", 60000);
+    window.setInterval("loadIFrameSource('kpbz_weatherstory', kpbz_weatherstory_url);", 600000);
+    window.setInterval("loadIFrameSource('natl_forecast', natl_forecast_url);", 600000);
+    <!-- Loading iframe source from JS to make page usable sooner -->
+    loadIFrameSource("kpbz_loop", kpbz_loop_url);
+    loadIFrameSource("kpbz_weatherstory", kpbz_weatherstory_url);
+    loadIFrameSource("natl_forecast", natl_forecast_url);
+  </script>
+</body>
+</html>
+

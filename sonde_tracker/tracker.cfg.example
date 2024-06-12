@@ -1,0 +1,55 @@
+#
+# sonde_tracker.py configuration file
+# Copy this file to tracker.cfg and modify as required.
+#
+
+#######################################
+# STATION LOCATION
+#######################################
+# Station latitude and longitude in decimal degrees.
+# A radiosonde detected within sonde_max_miles will be tracked.
+#
+[location]
+station_lat = 39.421177
+station_lon = -83.821146
+sonde_max_miles = 50.0
+
+#######################################
+# RADIOSONDE TRACKING
+#######################################
+# sonde_timeout_sec: Telemetry message timeout to start searching again.
+# sonde_dwell_sec: Maximum time to dwell on a timed out radiosonde before 
+#   re-centering at the station location.
+# follow: If True, then follow the sonde by panning the map when the distance
+#   from the map center exceeds follow_miles.
+#
+[tracking]
+sonde_timeout_sec = 180.0
+sonde_dwell_sec = 720.0
+follow = True
+follow_miles = 40.0
+
+#######################################
+# SONDEHUB CONFIGURATION
+#######################################
+# Reference: https://github.com/projecthorus/sondehub-tracker/wiki/SondeHub-Tracker-User-Guide
+# sondehub_map zoom: Specifies the sondehub.org map zoom level.
+#   Valid range appears to be 1 - 19 depending on the underlying map selection.
+#   Zoom 0=10000km scale ... 9=20km, 10=10km, ... 19=20m scale
+# sondehub_history: Specifies the time span of historical telemetry to show.
+#   Valid values appear to be: 0, 15s, 1m, 30m, 1h, 3h, 6h, 12h, 1d, 3d
+#   The sondehub.org website default is 3h
+#
+[sondehub]
+sondehub_map_zoom = 9
+sondehub_history = 3h
+sondehub_base_url = https://tracker.sondehub.org
+
+#######################################
+# APPLICATION CONFIGURATION
+#######################################
+# sonde_tracker.py application parameters.
+#
+[application]
+url_text_file = sondehub_url.txt
+log_file_base = logs/sonde_tracker_log

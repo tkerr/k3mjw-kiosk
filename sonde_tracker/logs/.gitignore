@@ -1,0 +1,3 @@
+# Empty .gitignore file used to keep directory in source control
+*.log
+*.txt
